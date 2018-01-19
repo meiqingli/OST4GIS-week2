@@ -50,16 +50,14 @@
     Without modifying part4-data-dirty.js, change your code to account for the dirty data.
 
     ===================== */
-
-    var data = bikeArrayClean;
+    // Bike Share data stored as array of arrays
+    data = bikeArrayClean
 
     /* =====================
 
     Start code to filter data
 
     ===================== */
-
-
 
     /* =====================
 
@@ -85,9 +83,13 @@
     Start code to add markers to map
 
     ===================== */
+    //leaflet application
+    //flip the coordinate
 
-
-
+    for (var i = 0; i < data.length; i = i + 1){
+      if (data[i][3] > 20){
+        L.marker([data[i][1],data[i][0]]).bindPopup(data[i][2]).openPopup().addTo(map);}
+    }
     /* =====================
 
     End code to add markers to map
