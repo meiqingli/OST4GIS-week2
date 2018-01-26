@@ -58,25 +58,29 @@
       var jsonToCsv = function(json) { console.log(json); };
       jsonToCsv(healthCenters);
       var healthCenterArray = [];
-      var healthCenterArray2 = [];
       var healthCenterArray1 = Object.keys(healthCenters[0]);
+      var healthCenterArray2 = [];
+      console.log(healthCenterArray1);
       healthCenterArray.push(healthCenterArray1);
       console.log(healthCenterArray);
       var leng = healthCenterArray1.length;
       console.log(leng);
+      console.log(healthCenters.length);
       for (var i = 0; i < healthCenters.length; i++){
         for (var j = 0; j < leng; j++){
-            var arraykey = healthCenterArray1[j];
-            healthCenterArray2.push(healthCenters[i][arraykey]);
+            healthCenterArray2.push(healthCenters[i][healthCenterArray1[j]]);
         };
+        var healthCenterArray2 = [];
         healthCenterArray.push(healthCenterArray2);
       };
       console.log(healthCenterArray);
+      console.log(healthCenterArray.length);
 
       var addMarkers = function(map) {
-        for (var i = 0; i < healthCenterArray.length; i = i++){
-          if (bikeArrayClean[i][3] > 20){
-            L.marker([bikeArrayClean[i][1],bikeArrayClean[i][0]]).addTo(map);}
+        for (var i = 1; i < healthCenterArray.length; i++){
+          if ((healthCenterArray[i][5] >= 19140) && (healthCenterArray[i][5] <= 19144)){
+            L.marker([healthCenterArray[i][1],healthCenterArray[i][0]]).
+            bindPopup(healthCenterArray[i][3]).openPopup().addTo(map);}
         };
       };
 
@@ -85,10 +89,7 @@
       End code
 
       ===================== */
-
-
-      // jsonToCsv(healthCenters);
-      // addMarkers(map);
+      addMarkers(map);
     </script>
     <!--Your code ends here-->
   </body>
