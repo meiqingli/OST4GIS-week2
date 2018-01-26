@@ -56,9 +56,29 @@
       ===================== */
 
       var jsonToCsv = function(json) { console.log(json); };
+      jsonToCsv(healthCenters);
+      var healthCenterArray = [];
+      var healthCenterArray2 = [];
+      var healthCenterArray1 = Object.keys(healthCenters[0]);
+      healthCenterArray.push(healthCenterArray1);
+      console.log(healthCenterArray);
+      var leng = healthCenterArray1.length;
+      console.log(leng);
+      for (var i = 0; i < healthCenters.length; i++){
+        for (var j = 0; j < leng; j++){
+            var arraykey = healthCenterArray1[j];
+            healthCenterArray2.push(healthCenters[i][arraykey]);
+        };
+        healthCenterArray.push(healthCenterArray2);
+      };
+      console.log(healthCenterArray);
 
-
-      var addMarkers = function(map) {};
+      var addMarkers = function(map) {
+        for (var i = 0; i < healthCenterArray.length; i = i++){
+          if (bikeArrayClean[i][3] > 20){
+            L.marker([bikeArrayClean[i][1],bikeArrayClean[i][0]]).addTo(map);}
+        };
+      };
 
       /* =====================
 
@@ -67,8 +87,8 @@
       ===================== */
 
 
-      jsonToCsv(healthCenters);
-      addMarkers(map);
+      // jsonToCsv(healthCenters);
+      // addMarkers(map);
     </script>
     <!--Your code ends here-->
   </body>
